@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat overrides.yaml
+echo $ACTIVATION_CODE
