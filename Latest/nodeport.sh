@@ -9,4 +9,4 @@ sed -ie '19 s/30080/30443/' ./temp/smartcheck-helm-master/templates/proxy.yaml >
 #Delete nodePort at line 30
 sed -ie '30d' ./temp/smartcheck-helm-master/templates/proxy.yaml >> /dev/null
 
-cat ./temp/smartcheck-helm-master/templates/proxy.yaml
+head -32 ./temp/smartcheck-helm-master/templates/proxy.yaml
