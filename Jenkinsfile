@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Add_NodePort"){
             steps{
-                sh 'nodeport.sh'
+                sh './Latest/nodeport.sh'
             }
         }
         stage("Upgrade_DSSC"){
