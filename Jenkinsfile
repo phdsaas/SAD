@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Upgrade_DSSC"){
             steps{
-                cat overrides.yaml
+                sh './Dssc/deploy.sh
             }
         }
         stage("Add_registry"){
