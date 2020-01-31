@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Upgrade_DSSC"){
             steps{
-                echo "====++++executing A++++===="
+                cat 'overrides.yaml'
             }
         }
         stage("Add_registry"){
