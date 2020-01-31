@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        label 'k8s-master'
+    }
     stages{
         stage("Latest_Chart"){
             steps{
