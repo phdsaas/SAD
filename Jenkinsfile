@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage("Download_Package"){
+        stage("Latest_Package"){
             steps{
                 echo "========executing A========"
             }
