@@ -1,0 +1,26 @@
+db:
+  user: 
+  password: 
+  host: dbhost.example.com
+  port: 5432
+  tls:
+    ca:
+      valueFrom:
+        configMapKeyRef:
+          name: dssc-db-trust
+          key: ca
+ 
+## This part is not for database
+## Below is default data needed for deployment
+## activationCode is the product activation code.
+##
+## Default value: (none)
+activationCode: ${ACTIVATION_CODE}
+   
+auth:
+  ## secretSeed is used as part of the password generation process for
+  ## all auto-generated internal passwords, ensuring that each installation of
+  ## Deep Security Smart Check has different passwords.
+  ##
+  ## Default value: {must be provided by the installer}
+  secretSeed: 
