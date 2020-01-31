@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf
+rm -rf *
 mkdir temp
 cd temp
 

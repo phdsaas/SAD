@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Add_NodePort"){
             steps{
-                echo "====++++executing A++++===="
+                sh '/Latest/sed.sh'
             }
         }
         stage("Upgrade_DSSC"){
