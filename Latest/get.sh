@@ -1,8 +1,8 @@
 #!/bin/bash
 
 rm -rf temp
-mkdir temp/
-cd temp/
+mkdir temp
+cd temp
 
 #Download Latest Chart
 curl -LO  https://github.com/deep-security/smartcheck-helm/archive/master.tar.gz
