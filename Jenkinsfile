@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Latest_Chart"){
             steps{
-                sh ./Latest/deploy.sh
+                sh './Latest/deploy.sh'
             }
         }
         stage("Add_NodePort"){
