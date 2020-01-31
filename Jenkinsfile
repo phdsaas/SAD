@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Upgrade_DSSC"){
             steps{
-                sh './Dssc/deploy.sh
+                sh './Dssc/deploy.sh'
             }
         }
         stage("Add_registry"){
