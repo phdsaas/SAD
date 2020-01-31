@@ -7,6 +7,6 @@ sed -ie '/^      targetPort/a \ \ \ \ \ \ nodePort: 30080' smartcheck-helm-maste
 sed '19 s/30080/30443/' smartcheck-helm-master/templates/proxy.yaml
 
 #Delete nodePort at line 30
-sed '30,$d' smartcheck-helm-master/templates/proxy.yaml
+sed '30d' smartcheck-helm-master/templates/proxy.yaml
 
 cat smartcheck-helm-master/templates/proxy.yaml
