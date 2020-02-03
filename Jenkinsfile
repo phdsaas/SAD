@@ -19,7 +19,7 @@ pipeline{
         }
         stage("Deploy_Static-service"){
             steps{
-                echo "./Static-service/deploy.sh"
+                sh "./Static-service/deploy.sh"
             }
         }
         stage("Scan_Registry"){
