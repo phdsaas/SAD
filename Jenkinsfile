@@ -24,7 +24,7 @@ pipeline{
         }
         stage("Import_Auth"){
             steps{
-                env.DSSC_PASS = sh(script: 'kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode', , returnStdout: true).trim()
+                env.DSSC_PASS = sh returnStdout: true, script: '''kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode'''
                 echo $DSSC_PASS
             }
         }
