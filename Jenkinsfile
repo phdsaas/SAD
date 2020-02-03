@@ -17,7 +17,7 @@ pipeline{
                 sh './Latest/nodeport.sh'
             }
         }
-        stage("Upgrade_DSSC"){
+        stage("Deploy_DSSC"){
             steps{
                 sh './Dssc/deploy.sh'
             }
