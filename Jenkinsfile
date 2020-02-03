@@ -12,19 +12,14 @@ pipeline{
                 sh './clean.sh'
             }
         }
-        stage("Add_NodePort"){
-            steps{
-                sh './Latest/nodeport.sh'
-            }
-        }
         stage("Deploy_DSSC"){
             steps{
                 sh './Dssc/deploy.sh'
             }
         }
-        stage("Add_registry"){
+        stage("Deploy_Static-service"){
             steps{
-                echo "====++++executing Add_registry++++===="
+                echo "./Static-service/deploy.sh"
             }
         }
         stage("Scan_Registry"){
