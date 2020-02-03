@@ -7,16 +7,16 @@ pipeline{
         ACTIVATION_CODE     = credentials('dssc-activation-code')
     }
     stages{
-        stage("Latest_Chart"){
+        stage("Clean_Up"){
             steps{
-                sh './Latest/get.sh'
+                sh './clean.sh'
             }
         }
-//        stage("Add_NodePort"){
-//            steps{
-//                sh './Latest/nodeport.sh'
-//            }
-//        }
+        stage("Add_NodePort"){
+            steps{
+                sh './Latest/nodeport.sh'
+            }
+        }
         stage("Deploy_DSSC"){
             steps{
                 sh './Dssc/deploy.sh'
