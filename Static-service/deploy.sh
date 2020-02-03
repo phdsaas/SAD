@@ -1,4 +1,5 @@
 #!/bin/bash
 
-kubectl apply --wait -f ./Static-service/static-service.yaml
+kubectl apply -f ./Static-service/static-service.yaml
+sleep 5s
 kubectl get services
