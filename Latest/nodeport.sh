@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#Set service https port to 30443
+#Set service http port to 30080
 sed -ie '/^      targetPort/a \ \ \ \ \ \ nodePort: 30080' ./temp/smartcheck-helm-master/templates/proxy.yaml >> /dev/null
 
-#Set service http port to 30080
+#Set service https port to 30443
 sed -ie '19 s/30080/30443/' ./temp/smartcheck-helm-master/templates/proxy.yaml >> /dev/null
 
 #Delete nodePort at line 30
