@@ -27,7 +27,7 @@ pipeline{
                 script{
                     env.DSSC_PASS = sh returnStdout: true, script: '''kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode'''
                 }
-                echo $DSSC_PASS
+                echo env.DSSC_PASS
             }
         }
         stage("Scan_Registry"){
