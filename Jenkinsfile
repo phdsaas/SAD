@@ -12,11 +12,11 @@ pipeline{
                 sh './Latest/get.sh'
             }
         }
-        stage("Add_NodePort"){
-            steps{
-                sh './Latest/nodeport.sh'
-            }
-        }
+//        stage("Add_NodePort"){
+//            steps{
+//                sh './Latest/nodeport.sh'
+//            }
+//        }
         stage("Deploy_DSSC"){
             steps{
                 sh './Dssc/deploy.sh'
