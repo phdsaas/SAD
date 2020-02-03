@@ -1,3 +1,3 @@
 #!/bin/bash
 
-helm install --debug --replace --set service.type=NodePort  --set persistence.enabled=false --set activationCode=AP-R9RM-92WHD-B2UR5-BV2YB-HZYM8-HYYVA --set auth.secretSeed=N0virus1 deepsecurity-smartcheck ./temp/smartcheck-helm-master/.
+helm install --debug --replace --set service.type=NodePort  --set persistence.enabled=false --set activationCode="$ACTIVATION_CODE" --set auth.secretSeed="$DSSC_SECRET_SEED" deepsecurity-smartcheck ./temp/smartcheck-helm-master/.
