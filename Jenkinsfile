@@ -2,7 +2,7 @@ pipeline{
     agent {
         label 'k8s-master'
     }
-/*    stages{
+    stages{
         stage("Clean_Up"){
             steps{
                 sh './clean.sh'
@@ -21,7 +21,7 @@ pipeline{
             steps{
                 sh "./Static-service/deploy.sh"
             }
-        } */
+        } 
         stage("Import_Auth"){
             steps{
                 script{
