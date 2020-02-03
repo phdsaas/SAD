@@ -3,5 +3,4 @@
 kubectl delete networkpolicies proxy
 sleep 2s
 
-helm install --set persistence.enabled=false --set activationCode=$ACTIVATION_CODE --set auth.secretSeed=$DSSC_SECRET_SEED --set service.type=NodePort deepsecurity-smartcheck ./temp/smartcheck-helm-master/
-sleep 3m
+helm install --set service.type=NodePort  --set persistence.enabled=false --set activationCode=$ACTIVATION_CODE --set auth.secretSeed=$DSSC_SECRET_SEED deepsecurity-smartcheck ./temp/smartcheck-helm-master/.
