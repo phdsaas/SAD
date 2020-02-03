@@ -32,7 +32,7 @@ pipeline{
         }
         stage("Scan_Registry"){
             steps{
-                echo "====++++executing Scan_Registry++++===="
+                echo env.DSSC_PASS
             }
         }
     }
