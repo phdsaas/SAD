@@ -16,20 +16,15 @@ pipeline{
             steps{
                 sh './Dssc/deploy.sh'
             }
+            script{
+                env.DSSC_PASS = sh returnStdout: true, script: '''kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode'''
+            }
         }
         stage("Add_ons"){
             steps{
                 sh "./Static-service/deploy.sh"
             }
         } 
-        stage("Import_Auth"){
-            steps{
-                script{
-                    env.DSSC_PASS = sh returnStdout: true, script: '''kubectl get secrets -o jsonpath='{ .data.password }' deepsecurity-smartcheck-auth | base64 --decode'''
-                }
-                echo env.DSSC_PASS
-            }
-        }
         stage("Scan_Registry"){
             steps{
                 echo env.DSSC_PASS
