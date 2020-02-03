@@ -17,7 +17,7 @@ pipeline{
                 sh './Dssc/deploy.sh'
             }
         }
-        stage("Deploy_Static-service"){
+        stage("Add_ons"){
             steps{
                 sh "./Static-service/deploy.sh"
             }
