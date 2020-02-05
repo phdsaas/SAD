@@ -32,6 +32,7 @@ pipeline{
                 AWS_AK      = credentials('aws-access-key')
                 AWS_SK      = credentials('aws-secret-key')
                 AWS_ACCOUNT_ID  = credentials('aws-account-id')
+                DSSC_PASS_NEW   = credentials('strong-password')
             }
             steps{
                 sh "./API/api.sh"
