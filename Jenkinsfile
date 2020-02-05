@@ -51,6 +51,8 @@ pipeline{
                         imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/phdsaas:latest",
                         smartcheckHost: "smartcheck.jayveev.tmi:30443",
                         smartcheckCredentialsId: "smartcheck-auth",
+                        insecureSkipTLSVerify: true,
+                        insecureSkipRegistryTLSVerify, true,
                         imagePullAuth: new groovy.json.JsonBuilder([
                             aws: [
                                 region: "us-east-2",
