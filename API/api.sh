@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#Generate Token
 export DSSC_TOKEN=$(curl -k https://smartcheck.jayveev.tmi:30443/api/sessions --header "Content-Type: application/json" --request POST --data '{
 "user": {
 "userID": "'"$DSSC_USER"'",
@@ -5,6 +8,13 @@ export DSSC_TOKEN=$(curl -k https://smartcheck.jayveev.tmi:30443/api/sessions --
 }
 }' | jq -r '.token')
 
+#Change admin password
+curl -k https://smartcheck.jayveev.tmi:30443/api/users/administrator/password --header "Content-Type: application/json" --header "Authorization: Bearer $DSSC_TOKEN" --request POST --data '{
+"oldPassword": "'"$DSSC_PASS"'",
+"newPassword": "'"$DSSC_PASS_NEW"'"
+}'
+
+#Add new registry
 curl -k https://smartcheck.jayveev.tmi:30443/api/registries --header "Content-Type: application/json" --header "Authorization: Bearer $DSSC_TOKEN" --request POST --data '{
 "name": "PHDSaaS ECR",
 "description": "This registry is manages by PH DSaaS Support Team",
