@@ -38,5 +38,10 @@ pipeline{
                 sh "./API/api.sh"
             }
         }
+        stage("Scan_Registry"){
+            steps{
+                echo "scan"
+            }
+        } 
     }
 }
