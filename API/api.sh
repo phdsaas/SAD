@@ -17,7 +17,7 @@ curl -k https://smartcheck.jayveev.tmi:30443/api/users/administrator/password --
 #Add new registry
 curl -k https://smartcheck.jayveev.tmi:30443/api/registries --header "Content-Type: application/json" --header "Authorization: Bearer $DSSC_TOKEN" --request POST --data '{
 "name": "PHDSaaS ECR",
-"description": "This registry is manages by PH DSaaS Support Team",
+"description": "This registry is managed by PH DSaaS Support Team",
 "host": "smartcheck.jayveev.tmi",
 "credentials": {
 "username": "'"$DSSC_USER"'",
