@@ -43,7 +43,6 @@ pipeline{
                 label 'master'
             }
             steps{
-                script{
                     withCredentials([
                         usernamePassword([
                             credentialsId: "ecr-auth",
@@ -64,7 +63,6 @@ pipeline{
                             ]).toString(),
                         ])
                     }
-                }
             }
         } 
     }
