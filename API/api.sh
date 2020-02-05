@@ -3,4 +3,6 @@ curl -k https://smartcheck.jayveev.tmi:30443/api/sessions --header "Content-Type
 "userID": "'"$DSSC_USER"'",
 "password": "'"$DSSC_PASS"'"
 }
-}'
+}' >> token.txt
+
+cat token.txt
