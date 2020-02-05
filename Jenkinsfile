@@ -28,9 +28,12 @@ pipeline{
         stage("Scan_Registry"){
             environment{
                 DSSC_USER   = credentials('dssc-username')
+                AWS_REGION  = credentials('aws-region')
+                AWS_AK      = credentials('aws-access-key')
+                AWS_SK      = credentials('aws-secret-key')
+                AWS_ACCOUNT_ID  = credentials('aws-account-id')
             }
             steps{
-                echo env.DSSC_PASS
                 sh "./API/api.sh"
             }
         }
