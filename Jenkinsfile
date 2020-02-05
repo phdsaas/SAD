@@ -25,7 +25,7 @@ pipeline{
                 sh "./Static-service/deploy.sh"
             }
         } 
-        stage("Scan_Registry"){
+        stage("Add_Registry"){
             environment{
                 DSSC_USER   = credentials('dssc-username')
                 AWS_REGION  = credentials('aws-region')
