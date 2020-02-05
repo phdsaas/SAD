@@ -39,8 +39,27 @@ pipeline{
             }
         }
         stage("Scan_Registry"){
-            steps{
-                echo "scan"
+            script{
+                withCredentials([
+                    usernamePassword([
+                        credentialsId: "ecr-auth",
+                        usernameVariable: "ACCESS_KEY_ID",
+                        passwordVariable: "SECRET_ACCESS_KEY",
+                    ])
+                ]){
+                    smartcheckScan([
+                        imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/phdsaas:latest",
+                        smartcheckHost: "smartcheck.jayveev.tmi",
+                        smartcheckCredentialsId: "smartcheck-auth",
+                        imagePullAuth: new groovy.json.JsonBuilder([
+                            aws: [
+                                region: AWS_REGION,
+                                accessKeyID: ACCESS_KEY_ID,
+                                secretAccessKey: SECRET_ACCESS_KEY,
+                            ]
+                        ]).toString(),
+                    ])
+                }
             }
         } 
     }
