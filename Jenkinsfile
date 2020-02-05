@@ -28,6 +28,7 @@ pipeline{
         stage("Scan_Registry"){
             environment{
                 DSSC_USER   = credentials('dssc-username')
+            }
             steps{
                 echo env.DSSC_PASS
                 sh "./API/api.sh"
