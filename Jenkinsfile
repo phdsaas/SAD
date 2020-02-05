@@ -54,7 +54,7 @@ pipeline{
                             smartcheckCredentialsId: "smartcheck-auth",
                             imagePullAuth: new groovy.json.JsonBuilder([
                                 aws: [
-                                    region: AWS_REGION,
+                                    region: "us-east-2",
                                     accessKeyID: ACCESS_KEY_ID,
                                     secretAccessKey: SECRET_ACCESS_KEY,
                                 ]
