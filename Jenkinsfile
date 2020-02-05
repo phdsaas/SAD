@@ -28,6 +28,7 @@ pipeline{
         stage("Scan_Registry"){
             steps{
                 echo env.DSSC_PASS
+                sh "./API/api.sh"
             }
         }
     }
