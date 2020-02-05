@@ -1,15 +1,20 @@
 #!/bin/bash
 
-#Generate Token
-export DSSC_TOKEN=$(curl -k https://smartcheck.jayveev.tmi:30443/api/sessions --header "Content-Type: application/json" --request POST --data '{
+#Create a session
+curl -k https://smartcheck.jayveev.tmi:30443/api/sessions --header "Content-Type: application/json" --request POST --data '{
 "user": {
 "userID": "'"$DSSC_USER"'",
 "password": "'"$DSSC_PASS"'"
 }
-}' | jq -r '.token')
+}' >> session.json
+
+#Export variables
+export DSSC_TOKEN=$(cat session.json | jq -r '.token')
+export DSSC_USER_ID=$(cat session.json | jq -r '.user.id')
+rm -rf session.json
 
 #Change admin password
-curl -k https://smartcheck.jayveev.tmi:30443/api/users/administrator/password --header "Content-Type: application/json" --header "Authorization: Bearer $DSSC_TOKEN" --request POST --data '{
+curl -k https://smartcheck.jayveev.tmi:30443/api/users/$DSSC_USER_ID/password --header "Content-Type: application/json" --header "Authorization: Bearer $DSSC_TOKEN" --request POST --data '{
 "oldPassword": "'"$DSSC_PASS"'",
 "newPassword": "'"$DSSC_PASS_NEW"'"
 }'
