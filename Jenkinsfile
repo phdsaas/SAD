@@ -1,18 +1,14 @@
 pipeline{
-    agent none
+    agent{
+        label 'k8s-master'
+    }
     stages{
         stage("Clean_Up"){
-            agent{
-                label 'k8s-master'
-            }
             steps{
                 sh './clean.sh'
             }
         }
         stage("Deploy_DSSC"){
-            agent{
-                label 'k8s-master'
-            }
             environment{
                 DSSC_SECRET_SEED    = credentials('dssc-secret-seed')
                 ACTIVATION_CODE     = credentials('dssc-activation-code')
@@ -25,17 +21,11 @@ pipeline{
             }
         }
         stage("Add_ons"){
-            agent{
-                label 'k8s-master'
-            }
             steps{
                 sh "./Static-service/deploy.sh"
             }
         } 
         stage("Add_Registry"){
-            agent{
-                label 'k8s-master'
-            }
             environment{
                 DSSC_USER   = credentials('dssc-username')
                 AWS_REGION  = credentials('aws-region')
