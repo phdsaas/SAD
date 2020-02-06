@@ -41,54 +41,58 @@ pipeline{
         stage("Scan_Registry"){
             parallel{
                 stage("alpine-eicar"){
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                        withCredentials([
-                            usernamePassword([
-                                credentialsId: "ecr-auth",
-                                usernameVariable: "ACCESS_KEY_ID",
-                                passwordVariable: "SECRET_ACCESS_KEY",
-                            ])
-                        ]){
-                            smartcheckScan([
-                                imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
-                                smartcheckHost: "smartcheck.jayveev.tmi:30443",
-                                smartcheckCredentialsId: "smartcheck-auth",
-                                insecureSkipTLSVerify: true,
-                                insecureSkipRegistryTLSVerify: true,
-                                imagePullAuth: new groovy.json.JsonBuilder([
-                                    aws: [
-                                        region: "us-east-2",
-                                        accessKeyID: ACCESS_KEY_ID,
-                                        secretAccessKey: SECRET_ACCESS_KEY,
-                                    ]
-                                ]).toString(),
-                            ])
+                    steps{
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            withCredentials([
+                                usernamePassword([
+                                    credentialsId: "ecr-auth",
+                                    usernameVariable: "ACCESS_KEY_ID",
+                                    passwordVariable: "SECRET_ACCESS_KEY",
+                                ])
+                            ]){
+                                smartcheckScan([
+                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
+                                    smartcheckHost: "smartcheck.jayveev.tmi:30443",
+                                    smartcheckCredentialsId: "smartcheck-auth",
+                                    insecureSkipTLSVerify: true,
+                                    insecureSkipRegistryTLSVerify: true,
+                                    imagePullAuth: new groovy.json.JsonBuilder([
+                                        aws: [
+                                            region: "us-east-2",
+                                            accessKeyID: ACCESS_KEY_ID,
+                                            secretAccessKey: SECRET_ACCESS_KEY,
+                                        ]
+                                    ]).toString(),
+                                ])
+                            }
                         }
                     }
                 }
                 stage("alpine-clean"){
-                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                        withCredentials([
-                            usernamePassword([
-                                credentialsId: "ecr-auth",
-                                usernameVariable: "ACCESS_KEY_ID",
-                                passwordVariable: "SECRET_ACCESS_KEY",
-                            ])
-                        ]){
-                            smartcheckScan([
-                                imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-clean:latest",
-                                smartcheckHost: "smartcheck.jayveev.tmi:30443",
-                                smartcheckCredentialsId: "smartcheck-auth",
-                                insecureSkipTLSVerify: true,
-                                insecureSkipRegistryTLSVerify: true,
-                                imagePullAuth: new groovy.json.JsonBuilder([
-                                    aws: [
-                                        region: "us-east-2",
-                                        accessKeyID: ACCESS_KEY_ID,
-                                        secretAccessKey: SECRET_ACCESS_KEY,
-                                    ]
-                                ]).toString(),
-                            ])
+                    steps{
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            withCredentials([
+                                usernamePassword([
+                                    credentialsId: "ecr-auth",
+                                    usernameVariable: "ACCESS_KEY_ID",
+                                    passwordVariable: "SECRET_ACCESS_KEY",
+                                ])
+                            ]){
+                                smartcheckScan([
+                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-clean:latest",
+                                    smartcheckHost: "smartcheck.jayveev.tmi:30443",
+                                    smartcheckCredentialsId: "smartcheck-auth",
+                                    insecureSkipTLSVerify: true,
+                                    insecureSkipRegistryTLSVerify: true,
+                                    imagePullAuth: new groovy.json.JsonBuilder([
+                                        aws: [
+                                            region: "us-east-2",
+                                            accessKeyID: ACCESS_KEY_ID,
+                                            secretAccessKey: SECRET_ACCESS_KEY,
+                                        ]
+                                    ]).toString(),
+                                ])
+                            }
                         }
                     }
                 }
