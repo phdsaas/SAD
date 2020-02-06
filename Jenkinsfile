@@ -40,34 +40,36 @@ pipeline{
         }
         stage("Scan_Registry"){
             steps{
-                withCredentials([
-                    usernamePassword([
-                        credentialsId: "ecr-auth",
-                        usernameVariable: "ACCESS_KEY_ID",
-                        passwordVariable: "SECRET_ACCESS_KEY",
-                    ])
-                ]){
-                    smartcheckScan([
-                        imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
-                        smartcheckHost: "smartcheck.jayveev.tmi:30443",
-                        smartcheckCredentialsId: "smartcheck-auth",
-                        insecureSkipTLSVerify: true,
-                        insecureSkipRegistryTLSVerify: true,
-                        imagePullAuth: new groovy.json.JsonBuilder([
-                            aws: [
-                                region: "us-east-2",
-                                accessKeyID: ACCESS_KEY_ID,
-                                secretAccessKey: SECRET_ACCESS_KEY,
-                            ]
-                        ]).toString(),
-                    ])
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                    withCredentials([
+                        usernamePassword([
+                            credentialsId: "ecr-auth",
+                            usernameVariable: "ACCESS_KEY_ID",
+                            passwordVariable: "SECRET_ACCESS_KEY",
+                        ])
+                    ]){
+                        smartcheckScan([
+                            imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
+                            smartcheckHost: "smartcheck.jayveev.tmi:30443",
+                            smartcheckCredentialsId: "smartcheck-auth",
+                            insecureSkipTLSVerify: true,
+                            insecureSkipRegistryTLSVerify: true,
+                            imagePullAuth: new groovy.json.JsonBuilder([
+                                aws: [
+                                    region: "us-east-2",
+                                    accessKeyID: ACCESS_KEY_ID,
+                                    secretAccessKey: SECRET_ACCESS_KEY,
+                                ]
+                            ]).toString(),
+                        ])
+                    }
                 }
             }
         } 
-    }
-    post{
-        always{
-            sh "https://raw.githubusercontent.com/deep-security/smartcheck-helm/master/collect-logs.sh"
+        stage("Diagnostic_Logs"){
+            steps{
+                sh "./diagnostic.sh"
+            }
         }
     }
 }
