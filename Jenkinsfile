@@ -69,7 +69,6 @@ pipeline{
         stage("Diagnostic_Logs"){
             steps{
                 sh "./diagnostic.sh"
-                echo "diagnostic package located at /tmp/diagnostic"env.EPOCH_TIME".zip"
             }
         }
     }
