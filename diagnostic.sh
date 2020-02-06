@@ -94,7 +94,17 @@ done
 echo "-----------------------------"
 echo "COLLECTING DIAGNOSTIC PACKAGE"
 echo "-----------------------------"
+
 export EPOCH_TIME=$(date '+%s')
 zip -rq diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
 mv diagnostic$EPOCH_TIME.zip /tmp/
 echo "The diagnostic package is located at /tmp/diagnostice$EPOCH_TIME.zip"
+
+echo "-----------------------"
+echo "COLLECTING SCAN RESULTS"
+echo "-----------------------"
+
+cp fake-image.json /tmp/fake-image-$EPOCH_TIME.json
+cp alpine-clean.json /tmp/alpine-clean-$EPOCH_TIME.json
+
+echo "Scan results is located at /tmp/fake-image-$EPOCH_TIME.json and /tmp/alpine-clean-$EPOCH_TIME.json"

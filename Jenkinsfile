@@ -56,6 +56,7 @@ pipeline{
                                     smartcheckCredentialsId: "smartcheck-auth",
                                     insecureSkipTLSVerify: true,
                                     insecureSkipRegistryTLSVerify: true,
+                                    resultsFile: "fake-image.json"
                                     imagePullAuth: new groovy.json.JsonBuilder([
                                         aws: [
                                             region: "us-east-2",
@@ -84,6 +85,7 @@ pipeline{
                                     smartcheckCredentialsId: "smartcheck-auth",
                                     insecureSkipTLSVerify: true,
                                     insecureSkipRegistryTLSVerify: true,
+                                    resultsFile: "alpine-clean.json"
                                     imagePullAuth: new groovy.json.JsonBuilder([
                                         aws: [
                                             region: "us-east-2",
