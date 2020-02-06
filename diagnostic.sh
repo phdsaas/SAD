@@ -80,7 +80,7 @@ for pod in $(echo "$PODS" | tr ";" "\n"); do
     # list containers in pod
     CONTAINERS=$($KUBECTL get pods "$NAMESPACE_PARAM" "$pod" -o jsonpath='{.spec.containers[*].name}')
     for container in $CONTAINERS; do
-        echo "Fetching Deep Security Smart Check logs... $pod - $container"
+        #echo "Fetching Deep Security Smart Check logs... $pod - $container"
         $KUBECTL logs "$NAMESPACE_PARAM" "$pod" -c "$container" > "$MASTER_DIR/apps/$pod-$container.log"
         # check for any previous containers, this would indicate a crash
         PREV_LOGFILE="$MASTER_DIR/apps/$pod-$container-previous.log"
@@ -97,4 +97,4 @@ echo "-----------------------------"
 export EPOCH_TIME=$(date '+%s')
 zip -rq diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
 mv diagnostic$EPOCH_TIME.zip /tmp/
-echo "diagnostic package located at /tmp/diagnostice$EPOCH_TIME.zip"
+echo "The diagnostic package is located at /tmp/diagnostice$EPOCH_TIME.zip"
