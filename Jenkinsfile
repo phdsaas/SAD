@@ -48,7 +48,7 @@ pipeline{
                     ])
                 ]){
                     smartcheckScan([
-                        imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/node10-vul:latest",
+                        imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
                         smartcheckHost: "smartcheck.jayveev.tmi:30443",
                         smartcheckCredentialsId: "smartcheck-auth",
                         insecureSkipTLSVerify: true,
