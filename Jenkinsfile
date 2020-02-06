@@ -40,7 +40,7 @@ pipeline{
         }
         stage("Scan_Registry"){
             parallel{
-                stage("alpine-eicar"){
+                stage("fake-image"){
                     steps{
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
@@ -51,7 +51,7 @@ pipeline{
                                 ])
                             ]){
                                 smartcheckScan([
-                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-eicar:latest",
+                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/fake-image:latest",
                                     smartcheckHost: "smartcheck.jayveev.tmi:30443",
                                     smartcheckCredentialsId: "smartcheck-auth",
                                     insecureSkipTLSVerify: true,
