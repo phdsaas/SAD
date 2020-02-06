@@ -91,7 +91,10 @@ for pod in $(echo "$PODS" | tr ";" "\n"); do
 done
 
 #collect the logs then upload to BitBucket
+echo "-----------------------------"
 echo "COLLECTING DIAGNOSTIC PACKAGE"
+echo "-----------------------------"
 export EPOCH_TIME=$(date '+%s')
-zip -r diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
+zip -rq diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
 mv diagnostic$EPOCH_TIME.zip /tmp/
+echo "diagnostic package located at /tmp/diagnostice$EPOCH_TIME.zip"
