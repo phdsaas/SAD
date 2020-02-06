@@ -65,4 +65,9 @@ pipeline{
             }
         } 
     }
+    post{
+        always{
+            sh "https://raw.githubusercontent.com/deep-security/smartcheck-helm/master/collect-logs.sh"
+        }
+    }
 }
