@@ -67,7 +67,6 @@ pipeline{
                                 ])
                             }
                         }
-                        echo "Test"
                     }
                 }
                 stage("busybox-clean"){
