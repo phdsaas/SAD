@@ -90,6 +90,17 @@ for pod in $(echo "$PODS" | tr ";" "\n"); do
     done
 done
 
+echo " "
+echo " "
+echo "-------------------"
+echo "SMART CHECK VERSION"
+echo "-------------------"
+helm list | grep VERSION
+helm list | grep smartcheck
+
+
+echo " "
+echo " "
 #collect the logs then upload to BitBucket
 echo "-----------------------------"
 echo "COLLECTING DIAGNOSTIC PACKAGE"
@@ -100,6 +111,8 @@ zip -rq diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
 mv diagnostic$EPOCH_TIME.zip /tmp/
 echo "The diagnostic package is located at /tmp/diagnostic$EPOCH_TIME.zip"
 
+echo " "
+echo " "
 echo "-----------------------"
 echo "COLLECTING SCAN RESULTS"
 echo "-----------------------"
