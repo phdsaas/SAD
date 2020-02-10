@@ -42,7 +42,7 @@ pipeline{
             parallel{
                 stage("fake-image"){
                     steps{
-                            /*catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
                                 usernamePassword([
                                     credentialsId: "ecr-auth",
@@ -66,7 +66,7 @@ pipeline{
                                     ]).toString(),
                                 ])
                             }
-                        }*/
+                        }
                         echo "Test"
                     }
                 }
@@ -81,7 +81,7 @@ pipeline{
                                 ])
                             ]){
                                 smartcheckScan([
-                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/alpine-clean:latest",
+                                    imageName: "143631420864.dkr.ecr.us-east-2.amazonaws.com/busybox-clean:latest",
                                     smartcheckHost: "smartcheck.jayveev.tmi:30443",
                                     smartcheckCredentialsId: "smartcheck-auth",
                                     insecureSkipTLSVerify: true,
