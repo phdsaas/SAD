@@ -98,7 +98,7 @@ echo "-----------------------------"
 export EPOCH_TIME=$(date '+%s')
 zip -rq diagnostic$EPOCH_TIME.zip /tmp/smartcheck/
 mv diagnostic$EPOCH_TIME.zip /tmp/
-echo "The diagnostic package is located at /tmp/diagnostice$EPOCH_TIME.zip"
+echo "The diagnostic package is located at /tmp/diagnostic$EPOCH_TIME.zip"
 
 echo "-----------------------"
 echo "COLLECTING SCAN RESULTS"
