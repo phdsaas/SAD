@@ -72,7 +72,6 @@ pipeline{
                 }
                 stage("busybox-clean"){
                     steps{
-                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
                                 usernamePassword([
                                     credentialsId: "ecr-auth",
@@ -99,7 +98,6 @@ pipeline{
                         }
                     }
                 }
-            }
         } 
         stage("Diagnostics"){
             steps{
