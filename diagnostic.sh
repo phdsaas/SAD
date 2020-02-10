@@ -118,6 +118,6 @@ echo "COLLECTING SCAN RESULTS"
 echo "-----------------------"
 
 cp fake-image.json /tmp/fake-image-$EPOCH_TIME.json
-cp alpine-clean.json /tmp/alpine-clean-$EPOCH_TIME.json
+cp busybox-clean.json /tmp/busybox-clean-$EPOCH_TIME.json
 
-echo "Scan results is located at /tmp/fake-image-$EPOCH_TIME.json and /tmp/alpine-clean-$EPOCH_TIME.json"
+echo "Scan results is located at /tmp/fake-image-$EPOCH_TIME.json and /tmp/busybox-clean-$EPOCH_TIME.json"
