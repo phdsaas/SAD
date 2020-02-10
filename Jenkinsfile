@@ -70,7 +70,7 @@ pipeline{
                         echo "Test"
                     }
                 }
-                stage("alpine-clean"){
+                stage("busybox-clean"){
                     steps{
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
