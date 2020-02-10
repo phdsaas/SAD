@@ -41,8 +41,8 @@ pipeline{
         stage("Scan_Registry"){
             parallel{
                 stage("fake-image"){
-/*                    steps{
-                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                    steps{
+                            /*catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
                                 usernamePassword([
                                     credentialsId: "ecr-auth",
@@ -66,9 +66,10 @@ pipeline{
                                     ]).toString(),
                                 ])
                             }
-                        }
+                        }*/
+                        echo "Test"
                     }
-                }*/
+                }
                 stage("alpine-clean"){
                     steps{
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
