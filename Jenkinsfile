@@ -101,7 +101,7 @@ pipeline{
                 }
             }
         } 
-        stage("Diagnostic_Logs"){
+        stage("Diagnostics"){
             steps{
                 sh "./diagnostic.sh"
             }
