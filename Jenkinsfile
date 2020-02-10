@@ -85,7 +85,7 @@ pipeline{
                                     smartcheckCredentialsId: "smartcheck-auth",
                                     insecureSkipTLSVerify: true,
                                     insecureSkipRegistryTLSVerify: true,
-                                    resultsFile: "alpine-clean.json",
+                                    resultsFile: "busybox-clean.json",
                                     imagePullAuth: new groovy.json.JsonBuilder([
                                         aws: [
                                             region: "us-east-2",
