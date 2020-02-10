@@ -41,7 +41,7 @@ pipeline{
         stage("Scan_Registry"){
             parallel{
                 stage("fake-image"){
-                    steps{
+/*                    steps{
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
                                 usernamePassword([
@@ -68,7 +68,7 @@ pipeline{
                             }
                         }
                     }
-                }
+                }*/
                 stage("alpine-clean"){
                     steps{
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
