@@ -42,6 +42,7 @@ pipeline{
             parallel{
                 stage("fake-image"){
                     steps{
+                            sh "sleep 10"
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                             withCredentials([
                                 usernamePassword([
